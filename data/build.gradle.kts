@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp") version "2.0.21-1.0.28"
 }
 
 android {
@@ -54,4 +55,6 @@ dependencies {
 
     implementation(libs.coroutines.core)
     implementation("io.insert-koin:koin-core:3.5.6")
+
+    ksp("androidx.room:room-compiler:2.6.1")
 }

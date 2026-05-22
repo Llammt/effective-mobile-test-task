@@ -1,5 +1,7 @@
 package com.effectivemobile.testtask.data.di
 
+import androidx.room.Room
+import com.effectivemobile.testtask.data.local.AppDatabase
 import com.effectivemobile.testtask.data.network.CourseApiService
 import com.effectivemobile.testtask.data.repository.CourseRepositoryImpl
 import com.effectivemobile.testtask.domain.repository.CourseRepository
@@ -38,8 +40,18 @@ val dataModule = module {
     }
 
     single<CourseRepository> {
-        CourseRepositoryImpl(apiService = get())
+        CourseRepositoryImpl(apiService = get(), courseDao = get())
     }
+
+    single {
+        Room.databaseBuilder(
+            get(), // Кoin сам подставит Context приложения, который мы передали в App.kt
+            AppDatabase::class.java,
+            "courses_database"
+        ).build()
+    }
+
+    single { get<AppDatabase>().courseDao() }
 }
 
 val domainModule = module {
