@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="menu_courses">Главная</string>
+    <string name="menu_favorites">Избранное</string>
+    <string name="menu_profile">Профиль</string>
+
+</resources>

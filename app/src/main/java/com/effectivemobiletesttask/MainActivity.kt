@@ -1,30 +1,33 @@
 package com.effectivemobiletesttask
 
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import com.effectivemobile.testtask.domain.usecase.GetCoursesUseCase
-import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    private val getCoursesUseCase: GetCoursesUseCase by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
-        lifecycleScope.launch {
-            Log.w("TEST_LOG", "Отправляем запрос в сеть...")
-            try {
-                val courses = getCoursesUseCase()
+        setContentView(R.layout.activity_main)
 
-                Log.w("TEST_LOG", "Успех! Найдено курсов: ${courses.size}")
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-                courses.forEach { course ->
-                    Log.w("TEST_LOG", "Курс: ${course.title} | Рейтинг: ${course.rating}")
-                }
-            } catch (e: Exception) {
-                Log.w("TEST_LOG", "Ошибка при получении данных: ${e.localizedMessage}", e)
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.main_fragment_container) as NavHostFragment
+
+        val navController = navHostFragment.navController
+
+        bottomNavigation.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.label == "Login") {
+                bottomNavigation.visibility = View.GONE
+            } else {
+                bottomNavigation.visibility = View.VISIBLE
             }
         }
     }

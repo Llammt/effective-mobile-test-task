@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.effectivemobile.testtask.features.presentation.login.LoginFragment"
+        android:label="Login" />
+
+    <fragment
+        android:id="@+id/coursesFragment"
+        android:name="com.effectivemobile.testtask.features.presentation.courses.CoursesFragment"
+        android:label="Home" />
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.effectivemobile.testtask.features.presentation.favorites.FavoritesFragment"
+        android:label="Favorites" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.effectivemobile.testtask.features.presentation.profile.ProfileFragment"
+        android:label="Profile" />
+
+</navigation>

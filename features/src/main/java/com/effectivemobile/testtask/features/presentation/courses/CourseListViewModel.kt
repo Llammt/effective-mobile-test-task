@@ -1,4 +1,4 @@
-package com.effectivemobile.testtask.features.presentation
+package com.effectivemobile.testtask.features.presentation.courses
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
