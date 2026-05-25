@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.presentation"
+    namespace = "com.effectivemobile.testtask.features"
     compileSdk {
         version = release(36)
     }

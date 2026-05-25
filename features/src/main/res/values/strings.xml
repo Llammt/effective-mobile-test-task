@@ -4,4 +4,14 @@
     <string name="menu_favorites">Избранное</string>
     <string name="menu_profile">Профиль</string>
 
+    <string name="text_label_enter">Вход</string>
+    <string name="text_label_email">Email</string>">
+    <string name="text_label_email_hint">example@gmail.com</string>
+    <string name="text_label_password">Пароль</string>
+    <string name="text_label_password_hint">Введите пароль</string>
+
+    <string name="button_enter">Вход</string>
+    <string name="text_label_no_profile">Нету аккаунта? Регистрация</string>
+    <string name="text_label_forgot_passw">Забыл пароль</string>
+
 </resources>
