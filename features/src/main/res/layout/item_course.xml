@@ -91,11 +91,11 @@
                 android:id="@+id/tvCourseTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/roboto"
-                tools:text="Java-разработчик с нуля" />
+                android:fontFamily="@font/roboto"/>
 
             <TextView
                 android:id="@+id/tvCourseDescription"
@@ -107,7 +107,6 @@
                 android:fontFamily="@font/roboto"
                 android:maxLines="2"
                 android:ellipsize="end"
-                tools:text="Освойте backend-разработку и программирование на Java, фреймворки Spring и Hibernate с практикой на реальных проектах."
                 app:layout_constraintTop_toBottomOf="@id/tvCourseTitle" />
 
             <TextView

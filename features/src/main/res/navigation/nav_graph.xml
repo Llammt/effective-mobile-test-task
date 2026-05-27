@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.effectivemobile.testtask.features.presentation.favorites.FavoritesFragment"
+        android:name="com.effectivemobile.testtask.features.presentation.favorites.FavoritesCoursesFragment"
         android:label="Favorites" />
 
     <fragment

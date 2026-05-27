@@ -9,9 +9,8 @@ import com.effectivemobile.testtask.domain.model.Course
 import com.effectivemobile.testtask.domain.repository.CourseRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
-import kotlin.toString
 
 class CourseRepositoryImpl(
     private val apiService: CourseApiService,
@@ -21,23 +20,21 @@ class CourseRepositoryImpl(
     override suspend fun getCourses(): List<Course> = withContext(Dispatchers.IO) {
         try {
             val networkCourses = apiService.getCourses().courses
-
             val favoriteIds = courseDao.getFavoriteIds().map { it.toString() }.toSet()
 
-            networkCourses.map { dto ->
+            return@withContext networkCourses.map { dto ->
                 val isLocalFavorite = favoriteIds.contains(dto.id.toString())
                 dto.toDomain(isLocalFavorite = isLocalFavorite)
             }
-
         } catch (e: Exception) {
-            // exeption handling
+            return@withContext courseDao.getAllCourses().map { it.toDomain() }
         }
-
-        courseDao.getAllCourses().map { it.toDomain() }
     }
 
     override fun getFavoriteCourses(): Flow<List<Course>> {
-        return flow { emit(emptyList()) }
+        return courseDao.getFavoriteCoursesFlow().map { entities ->
+            entities.map { it.toDomain() }
+        }
     }
 
     override suspend fun toggleFavorite(course: Course) = withContext(Dispatchers.IO) {
