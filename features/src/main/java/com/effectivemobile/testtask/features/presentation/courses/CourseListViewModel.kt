@@ -55,6 +55,21 @@ class CourseListViewModel(
             }
         }
     }
+
+    fun sortCourses(byDate: Boolean) {
+        val currentState = _state.value
+        if (currentState is CourseListState.Success) {
+            val currentList = currentState.courses
+
+            val sortedList = if (byDate) {
+                currentList.sortedByDescending { it.publishDate }
+            } else {
+                currentList.sortedBy { it.price.toIntOrNull() ?: 0 }
+            }
+
+            _state.value = CourseListState.Success(sortedList)
+        }
+    }
 }
 
 sealed interface CourseListState {

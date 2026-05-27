@@ -10,8 +10,11 @@ data class CourseEntity(
     val id: Int,
     val title: String,
     val description: String,
+    val price: String,
     val rating: String,
-    val isFavorite: Boolean
+    val startDate: String,
+    val isFavorite: Boolean,
+    val publishDate: String
 )
 
 fun CourseEntity.toDomain(): Course {
@@ -19,8 +22,10 @@ fun CourseEntity.toDomain(): Course {
         id = this.id.toString(),
         title = this.title,
         description = this.description,
+        price = this.price,
         rating = this.rating,
-        imageUrl = "",
-        isFavorite = this.isFavorite
+        startDate = this.startDate,
+        isFavorite = this.isFavorite,
+        publishDate = this.publishDate
     )
 }

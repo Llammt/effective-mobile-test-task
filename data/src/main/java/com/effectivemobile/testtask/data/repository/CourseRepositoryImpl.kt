@@ -45,8 +45,11 @@ class CourseRepositoryImpl(
                 id = course.id.toInt(),
                 title = course.title,
                 description = course.description,
+                price = course.price,
                 rating = course.rating,
-                isFavorite = true
+                startDate = course.startDate,
+                isFavorite = true,
+                publishDate = course.publishDate
             )
             courseDao.insertFavorite(entity)
         }

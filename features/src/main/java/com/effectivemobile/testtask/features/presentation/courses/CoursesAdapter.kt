@@ -1,5 +1,6 @@
 package com.effectivemobile.testtask.features.presentation.courses
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -39,12 +40,12 @@ class CoursesAdapter(
             with(binding) {
                 tvCourseTitle.text = course.title
                 tvCourseDescription.text = course.description
-                tvRate.text = course.rating
-                tvPrice.text = "999 ₽"
-                tvPublishDate.text = "22 Мая 2024"
+                tvRating.text = course.rating
+                tvCoursePrice.text = course.price
+                tvPublishDate.text = course.publishDate
 
                 val colorRes = placeholderColors[position % placeholderColors.size]
-                ivCourseBanner.setImageResource(colorRes)
+                ivCourseCover.setImageResource(colorRes)
 
                 if (course.isFavorite) {
                     ivFavorite.setImageResource(android.R.drawable.btn_star_big_on)

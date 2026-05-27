@@ -11,8 +11,11 @@ data class CourseDto(
     @SerializedName("id") val id: Int,
     @SerializedName("title") val title: String,
     @SerializedName("text") val text: String,
+    @SerializedName("price") val price: String,
     @SerializedName("rate") val rate: String,
-    @SerializedName("hasLike") val hasLike: Boolean?
+    @SerializedName("startDate") val startDate: String,
+    @SerializedName("hasLike") val hasLike: Boolean?,
+    @SerializedName("publishDate") val publishDate: String
 )
 
 fun CourseDto.toDomain(isLocalFavorite: Boolean): Course {
@@ -20,8 +23,10 @@ fun CourseDto.toDomain(isLocalFavorite: Boolean): Course {
         id = this.id.toString(),
         title = this.title,
         description = this.text,
+        price = this.price,
         rating = this.rate,
-        imageUrl = "",
-        isFavorite = isLocalFavorite || (this.hasLike ?: false)
+        startDate = this.startDate,
+        isFavorite = isLocalFavorite || (this.hasLike ?: false),
+        publishDate = this.publishDate
     )
 }
