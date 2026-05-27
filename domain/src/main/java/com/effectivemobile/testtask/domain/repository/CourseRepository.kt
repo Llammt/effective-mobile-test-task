@@ -7,5 +7,5 @@ interface CourseRepository {
 
     fun getFavoriteCourses(): Flow<List<Course>>
 
-    suspend fun toggleFavorite(courseId: String, isFavorite: Boolean)
+    suspend fun toggleFavorite(course: Course)
 }

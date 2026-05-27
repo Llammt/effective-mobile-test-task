@@ -5,5 +5,5 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val featuresModule = module {
-    viewModel { CourseListViewModel(getCoursesUseCase = get()) }
+    viewModel { CourseListViewModel(get(), get()) }
 }

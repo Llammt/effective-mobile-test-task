@@ -14,4 +14,6 @@
     <string name="text_label_no_profile">Нету аккаунта? Регистрация</string>
     <string name="text_label_forgot_passw">Забыл пароль</string>
 
+    <string name="text_label_empty_list">Список курсов пуст</string>
+
 </resources>

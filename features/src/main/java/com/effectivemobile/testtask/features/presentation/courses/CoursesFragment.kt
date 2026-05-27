@@ -5,14 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.effectivemobile.testtask.features.databinding.FragmentCoursesBinding
-import com.effectivemobile.testtask.features.presentation.courses.CoursesAdapter
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CoursesFragment : Fragment() {
 
     private var _binding: FragmentCoursesBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: CourseListViewModel by viewModel()
 
     private lateinit var coursesAdapter: CoursesAdapter
 
@@ -29,43 +34,33 @@ class CoursesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         coursesAdapter = CoursesAdapter { clickedCourse ->
-            Toast.makeText(
-                requireContext(),
-                "Кликнули на избранное у курса: ${clickedCourse.title}",
-                Toast.LENGTH_SHORT
-            ).show()
+            viewModel.toggleFavorite(clickedCourse)
         }
 
         binding.rvCourses.adapter = coursesAdapter
 
-        val fakeCourses = listOf(
-            com.effectivemobile.testtask.domain.model.Course(
-                id = "1",
-                title = "Java-разработчик с нуля",
-                description = "Освойте backend-разработку и программирование на Java, фреймворки Spring и Hibernate с практикой на реальных проектах.",
-                rating = "4.9",
-                imageUrl = "",
-                isFavorite = true
-            ),
-            com.effectivemobile.testtask.domain.model.Course(
-                id = "2",
-                title = "Разработка на Kotlin",
-                description = "Изучите основы синтаксиса, ООП, корутины и создание мобильных приложений под Android.",
-                rating = "4.8",
-                imageUrl = "",
-                isFavorite = false
-            ),
-            com.effectivemobile.testtask.domain.model.Course(
-                id = "3",
-                title = "Тестировщик ПО (QA)",
-                description = "Научитесь искать баги, писать тест-кейсы и автоматизировать проверки веб-интерфейсов.",
-                rating = "4.5",
-                imageUrl = "",
-                isFavorite = false
-            )
-        )
-
-        coursesAdapter.submitList(fakeCourses)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.state.collect { state ->
+                when (state) {
+                    is CourseListState.Loading -> {
+                        // binding.progressBar.isVisible = true
+                    }
+                    is CourseListState.Success -> {
+                        // binding.progressBar.isVisible = false
+                        binding.rvCourses.isVisible = true
+                        coursesAdapter.submitList(state.courses)
+                    }
+                    is CourseListState.Error -> {
+                        // binding.progressBar.isVisible = false
+                        Toast.makeText(requireContext(), state.message, Toast.LENGTH_LONG).show()
+                    }
+                    is CourseListState.Empty -> {
+                        // binding.progressBar.isVisible = false
+                        Toast.makeText(requireContext(), "@string/text_label_empty_list", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {

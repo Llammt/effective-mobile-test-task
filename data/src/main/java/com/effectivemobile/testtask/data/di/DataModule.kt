@@ -12,6 +12,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 import com.effectivemobile.testtask.domain.usecase.GetCoursesUseCase
+import com.effectivemobile.testtask.domain.usecase.ToggleFavoriteUseCase
 
 val dataModule = module {
 
@@ -45,7 +46,7 @@ val dataModule = module {
 
     single {
         Room.databaseBuilder(
-            get(), // Кoin сам подставит Context приложения, который мы передали в App.kt
+            get(),
             AppDatabase::class.java,
             "courses_database"
         ).build()
@@ -56,4 +57,5 @@ val dataModule = module {
 
 val domainModule = module {
     factory { GetCoursesUseCase(repository = get()) }
+    factory { ToggleFavoriteUseCase(repository = get()) }
 }

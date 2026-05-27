@@ -1,9 +1,13 @@
 package com.effectivemobile.testtask.data.network
 
+import com.google.gson.annotations.SerializedName
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface CourseApiService {
-    @GET("u/0/uc?id=15arTK7XT2b7Yv4BJsmDctA4Hg-BbS8-q&export=download")
-    suspend fun getCourses(): CoursesResponse
+    @GET("u/0/uc")
+    suspend fun getCourses(
+        @Query("id") id: String = "15arTK7XT2b7Yv4BJsmDctA4Hg-BbS8-q",
+        @Query("export") export: String = "download"
+    ): CoursesResponse
 }
-
