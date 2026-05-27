@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="4.9"
+                    android:text=" "
                     android:textColor="#F2F2F3"
                     android:textSize="12sp"
                     android:fontFamily="@font/roboto" />
@@ -95,7 +95,7 @@
                     android:id="@+id/tvPublishDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="22 Мая 2024"
+                    android:text=" "
                     android:textColor="#F2F2F3"
                     android:textSize="12sp"
                     android:fontFamily="@font/roboto" />
@@ -115,7 +115,7 @@
             app:layout_constraintTop_toBottomOf="@id/ivCourseCover"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Java-разработчик с нуля" />
+            tools:text=" " />
 
         <TextView
             android:id="@+id/tvCourseDescription"
@@ -131,7 +131,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvCourseTitle"
             app:layout_constraintStart_toStartOf="@id/tvCourseTitle"
             app:layout_constraintEnd_toEndOf="@id/tvCourseTitle"
-            tools:text="Освойте backend-разработку и программирование на Java, фреймворки Spring..." />
+            tools:text=" " />
 
         <TextView
             android:id="@+id/tvCoursePrice"
@@ -144,7 +144,7 @@
             android:fontWeight="500"
             app:layout_constraintTop_toBottomOf="@id/tvCourseDescription"
             app:layout_constraintStart_toStartOf="@id/tvCourseDescription"
-            tools:text="999 ₽" />
+            tools:text=" " />
 
         <LinearLayout
             android:id="@+id/btnMore"
@@ -161,7 +161,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Подробнее"
+                android:text=" "
                 android:textColor="#12B956"
                 android:textSize="12sp"
                 android:fontFamily="@font/roboto"

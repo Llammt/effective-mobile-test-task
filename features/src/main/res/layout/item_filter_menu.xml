@@ -18,7 +18,7 @@
     android:gravity="end"
     android:maxLines="1"
     android:ellipsize="end"
-    android:text="По дате добавления" />
+    android:text=" " />
 
     <ImageView
         android:layout_width="16dp"

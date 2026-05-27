@@ -16,4 +16,12 @@
 
     <string name="text_label_empty_list">Список курсов пуст</string>
 
+    <string name="text_label_search_hint">Поиск курсов...</string>
+    <string name="text_label_description_btn_filter">Фильтр</string>
+
+    <string name="text_label_title_favorites">Избранное</string>
+
+    <string name="text_label_btn_vk">VK</string>
+    <string name="text_label_btn_ok">ОК</string>
+
 </resources>

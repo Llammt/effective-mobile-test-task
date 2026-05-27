@@ -25,7 +25,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/bg_search_field"
-            android:hint="Поиск курсов..."
+            android:hint="@string/text_label_search_hint"
             android:textColorHint="#757575"
             android:textColor="@android:color/white"
             android:textSize="14sp"
@@ -44,7 +44,7 @@
             android:layout_marginStart="12dp"
             android:background="@drawable/bg_search_field" android:src="@android:drawable/ic_menu_manage"
             android:scaleType="centerInside"
-            android:contentDescription="Фильтр" />
+            android:contentDescription="@string/text_label_description_btn_filter" />
 
     </LinearLayout>
 

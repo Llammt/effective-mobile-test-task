@@ -64,10 +64,15 @@ class CourseListViewModel(
             val sortedList = if (byDate) {
                 currentList.sortedByDescending { it.publishDate }
             } else {
-                currentList.sortedBy { it.price.toIntOrNull() ?: 0 }
+                currentList.sortedBy { course ->
+                    // Очищаем строку цены от грязи (пробелы, ₽, символы) перед кастом в Int
+                    val numericPrice = course.price.replace(Regex("[^0-9]"), "")
+                    numericPrice.toIntOrNull() ?: 0
+                }
             }
 
-            _state.value = CourseListState.Success(sortedList)
+            // Пересоздаем стейт с новым отсортированным списком (toMutableList() или новый Success)
+            _state.value = CourseListState.Success(sortedList.toList())
         }
     }
 }
